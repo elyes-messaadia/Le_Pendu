@@ -27,4 +27,23 @@ L'objectif est de deviner un mot choisi aléatoirement parmi une liste. À chaqu
    Installez Pygame : 
    ```
    pip install pygame
-   ```
+
+   Lancement
+   python main.py
+   
+   📂 Structure du Projet
+   
+main.py : Point d'entrée et boucle de jeu.
+
+mots.txt : Liste des mots à deviner.
+
+scores.txt : Archive des scores des joueurs.
+
+src/ : Dossier contenant la logique métier et l'interface.
+
+🎯 Compétences Visées
+Configuration d'un environnement de travail.
+
+Développement d'interfaces utilisateur graphiques.
+
+Développement de composants métier (gestion de fichiers, logique de jeu).
