@@ -1,4 +1,8 @@
 import random
+DEFAULTS_WORDS=["Banane", "Chocolat", "Fraise", "Clafoutis", "Tartelette", 
+    "Opéra", "Charlotte", "Meringue", "Macarons", "Rose", 
+    "Sirop", "Tiramisu", "Café", "Cannelle", "Vanille"
+]
 
 def save_words():
  try:
@@ -12,6 +16,16 @@ def save_words():
    print("Error, No such files 'mots.txt'")
    return ["ERROR"]
  return clean_word
+
+def reset_words():
+  try:
+    with open("mots.txt","w",encoding="utf-8") as file:
+      for words in DEFAULTS_WORDS:
+        file.write(words+"\n")
+  except IOError:
+    print("Failed to reinitialize")
+    
+         
     
 def choose_word(lists):
    if lists:
