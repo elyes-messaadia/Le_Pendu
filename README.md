@@ -81,8 +81,8 @@ Le_Pendu/
 │   └── images/             # Images et sprites
 │
 ├── 📁 data/                # Données du jeu
-│   ├── mots.txt            # Liste des mots à deviner
-│   └── scores.txt          # Archive des scores des joueurs
+│   ├── mots.json            # Liste des mots à deviner
+│   └── scores.json          # Archive des scores des joueurs
 │
 └── 📁 src/                 # Code source
     ├── engine.py           # Logique métier du jeu
