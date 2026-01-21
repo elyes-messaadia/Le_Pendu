@@ -19,9 +19,17 @@ pygame.display.set_caption("Hangman Game")
 
 def display_menu(screen):
    screen.fill(GRAY)
+   txt_title=font.render("Hangman Game",True,GREEN)
+   txt_game=font.render("Tap G to play",True,GREEN)
+   txt_scores=font.render("Tap S to see scores",True,GREEN)
+   txt_personnalize=font.render("Tap P to add your customized word!",True, GREEN)
+
+   screen.blit(txt_title,(20,20))
+   screen.blit(txt_game,(50,50))
+   screen.blit(txt_scores,(80,80))
+   screen.blit(txt_personnalize,(110,110))
 
 def add_word(current_text, screen):
-   save_words()
    screen.fill(RED)
    welcome_word=font.render("Here you can add a personnalized word to the game!",True,GREEN)
    screen.blit(welcome_word,(20,20))
@@ -31,15 +39,56 @@ def add_word(current_text, screen):
    screen.blit(user_input,(50,50))
 
  
-def play_game(screen):
-   screen.fill(GREEN)
+def play_game(screen, error, guessed_word, secret_word):
+    screen.fill(GREEN)
+
+    x_start=200
+    y_position=400
+
+    for letters in secret_word:
+      if letters in guessed_word:
+        letter=font.render(letters,True,RED)
+      else:
+        letter=font.render("_",True,RED)
+
+      screen.blit(letter,(x_start,y_position))
+      x_start+=50
+      
+    poteau=pygame.draw.line(screen, GRAY,(600,300),(600,500),width=5)
+    base=pygame.draw.line(screen, GRAY,(550,500),(750,500),width=5)
+    poteau_straight=pygame.draw.line(screen, GRAY,(600,301),(700,301),width=5)
+    fall_line=pygame.draw.line(screen, GRAY,(700,330),(700,300),width=5)
+    traverse = pygame.draw.line(screen, GRAY, (600, 340), (640, 300), width=5)
+
+    if error>=1:
+     head = pygame.draw.circle(screen, GRAY, (700, 350), 20, width=5)
+    elif error>=2:
+     body = pygame.draw.line(screen, GRAY, (700, 370), (700, 410), width=5)
+    elif error>=3:
+     arm_left = pygame.draw.line(screen, GRAY, (700, 380), (660, 400), width=5)
+    elif error>=4:
+     arm_right = pygame.draw.line(screen, GRAY, (700, 380), (740, 400), width=5)
+    elif error>=5:
+     leg_left = pygame.draw.line(screen, GRAY, (700, 410), (680, 460), width=5)
+    elif error>=6:
+     leg_right = pygame.draw.line(screen, GRAY, (700, 410), (720, 460), width=5)
+  
+   
+
+
+
 def see_score(screen):
    screen.fill(BLUE)
+
 def quit():
    pass
 
 current_state="MENU"
 user_text=""
+error=0
+guessed_word=[]
+list_word=save_words()
+secret_word=choose_word(list_word)
 while running:
     for event in pygame.event.get():
 
@@ -57,7 +106,10 @@ while running:
               current_state="SCORES"
            
          elif current_state=="GAME":
-            pass
+             randomizer=save_words()
+             word=choose_word(randomizer)
+             print(word)
+
          
          elif current_state=="SCORES":
             pass
@@ -81,7 +133,7 @@ while running:
     if current_state=="MENU":
          display_menu(screen)
     elif current_state=="GAME":
-         play_game(screen)
+         play_game(screen, error, guessed_word, secret_word)
     elif current_state=="SCORES":
          see_score(screen)
     elif current_state=="PERSONNALIZE":
