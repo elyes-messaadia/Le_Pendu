@@ -1,0 +1,22 @@
+# Dimensions de la fenêtre
+LARGEUR = 800
+HAUTEUR = 600
+
+# Couleurs
+BLANC = (255, 255, 255)
+NOIR = (0, 0, 0)
+ROUGE = (255, 0, 0)
+VERT = (0, 255, 0)
+BLEU = (0, 100, 255)
+
+# Paramètres du jeu
+VIES_FACILE = 10
+VIES_MOYEN = 7
+VIES_DIFFICILE = 5
+
+# Scores
+POINTS_LETTRE = 10
+POINTS_MOT_COMPLET = 100
+BONUS_FACILE = 1
+BONUS_MOYEN = 1.5
+BONUS_DIFFICILE = 2
