@@ -12,7 +12,7 @@ WIDTH, HEIGHT = 800, 600
 def load_random_word():
     try:
         # Load from JSON as requested
-        with open("mots.json", "r", encoding="utf-8") as f:
+        with open("data/mots.json", "r", encoding="utf-8") as f:
             data = json.load(f)
             return random.choice(data["mots"]).upper()
     except:
